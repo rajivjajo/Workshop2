@@ -1,30 +1,20 @@
 package com.bridgelabz.worksho2;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class DistinctEleOfArray {
     public static void main(String[] args) {
-        int[] arr1 = new int[]{1, 2, 3, 4, 5};
-        int[] arr2 = new int[]{4, 5, 6, 7, 8};
-        boolean contains = false;
-        ArrayList<Integer> list1 = new ArrayList<>();
+        List<Integer> list1 = Arrays.asList(1, 2, 3, 4);
+        List<Integer> list2 = Arrays.asList(3, 4, 5, 6);
 
-        for (int i = 0; i < arr1.length; i++) {
-            for (int j = 0; j < arr2.length; j++) {
-                if( arr1[i]==arr2[j]){
-                    contains = true;
-                    break;
-                }
-            }
-            if(!contains ) {
-                list1.add(arr1[i]);
+        Set<Integer> union = new HashSet<>(list1);
+        union.addAll(list2);
 
-            }else {
-                contains = false;
-
-            }
+        Set<Integer> intersection = new HashSet<>(list1);
+        intersection.retainAll(list2);
+        union.removeAll(intersection);
+        for (Integer n : union) {
+            System.out.println(n);
         }
-        System.out.println(list1);
     }
 }
